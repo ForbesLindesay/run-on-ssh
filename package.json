@@ -1,0 +1,38 @@
+{
+  "name": "run-on-ssh",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "description": "Run a node.js script on a given ssh server",
+  "keywords": [],
+  "files": [
+    "lib/"
+  ],
+  "dependencies": {
+    "babel-runtime": "^6.3.19",
+    "lsr": "^1.0.0",
+    "promise": "^7.1.1",
+    "ssh2": "^0.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-preset-forbeslindesay": "*",
+    "eslint": "*",
+    "eslint-config-forbeslindesay": "*",
+    "testit": "*"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src --out-dir lib",
+    "lint": "eslint src",
+    "test": "babel-node test/index.js && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ForbesLindesay/run-on-ssh.git"
+  },
+  "author": {
+    "name": "Forbes Lindesay",
+    "url": "http://github.com/ForbesLindesay"
+  },
+  "license": "MIT"
+}
