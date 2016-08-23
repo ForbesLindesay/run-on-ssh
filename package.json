@@ -1,6 +1,6 @@
 {
   "name": "run-on-ssh",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "description": "Run a node.js script on a given ssh server",
   "keywords": [],
