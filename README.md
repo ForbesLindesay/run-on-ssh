@@ -17,15 +17,17 @@ npm install run-on-ssh --save
 ```js
 var runOnSsh = require('run-on-ssh');
 
-return runOnSsh({
+var runCommand = runOnSsh({
   // see https://www.npmjs.com/package/ssh2 .connect for `remote` option.
   remote: {host, password},
   directory: __dirname + '/path/to/folder',
   nodeVersion: 'v6.4.0', // defaults to `process.version`
-  env: {MY_ENV_VAR: 'foo'},  // defaults to `{}` so you don't accidentally expose your environment
-  args: ['bar'], // defaults to `[]`
   // N.B. debug defaults to false if `process.env.NODE_ENV === 'production'`
   debug: false,
+});
+runCommand({
+  env: {MY_ENV_VAR: 'foo'},  // defaults to `{}` so you don't accidentally expose your environment
+  args: ['bar'], // defaults to `[]`
 }).then(res => assert(res === '00017foobar\n'));
 ```
 
