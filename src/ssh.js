@@ -29,10 +29,6 @@ export default class SSH {
     if (Array.isArray(commands)) commands = commands.join(' && ');
     const debug = (options.debug === undefined ? this._options.debug : options.debug) || false;
 
-    if (debug) {
-      console.log('ssh-exec: ' + commands);
-    }
-
     let setStdin;
     const stdin = new Promise(resolve => setStdin = resolve);
 
@@ -68,21 +64,12 @@ export default class SSH {
             }
           }
           stream.on('end', () => {
-            if (debug) {
-              console.log('stdout end');
-            }
             onEnd();
           });
           stream.stderr.on('end', () => {
-            if (debug) {
-              console.log('stderr end');
-            }
             onEnd();
           });
           stream.on('exit', code => {
-            if (debug) {
-              console.log('exit ' + code);
-            }
             exitCode = code;
             onEnd();
           });
