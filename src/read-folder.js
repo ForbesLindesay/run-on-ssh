@@ -8,7 +8,7 @@ const readFile = Promise.denodeify(fs.readFile);
 function order(a, b) {
   return a.path < b.path ? -1 : 1;
 }
-export default function readFolder(dirname) {
+export default function readFolder(dirname, nodeVersion) {
   return lsr(dirname, {filter(entry) { return entry.name !== 'node_modules'; }}).then(res => {
     return Promise.all(res.sort(order).map(entry => {
       if (entry.isDirectory()) {
@@ -21,6 +21,7 @@ export default function readFolder(dirname) {
     }));
   }).then(entries => {
     const hash = createHash('sha1');
+    hash.update(nodeVersion);
     entries.forEach(entry => {
       hash.update(entry.type, 'utf8');
       hash.update(entry.path, 'utf8');

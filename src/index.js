@@ -14,7 +14,7 @@ export default function runOnSsh({remote, directory, nodeVersion, debug}) {
     }, {debug});
   }
   const connection = getConnection();
-  const ready = Promise.all([readFolder(directory), connection.ready]).then(([dir]) => {
+  const ready = Promise.all([readFolder(directory, nodeVersion), connection.ready]).then(([dir]) => {
     return connection.exec('cd ~/' + dir.hash).catch(
       () => copyEntriesToDir(connection, dir.entries, '~/' + dir.hash).then(
         () => connection.exec(['cd ~/' + dir.hash, 'nvm install ' + nodeVersion, 'npm install']),
