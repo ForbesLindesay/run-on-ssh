@@ -1,5 +1,7 @@
 # run-on-ssh
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ForbesLindesay/run-on-ssh.svg)](https://greenkeeper.io/)
+
 Run a node.js script on a given ssh server
 
 [![Build Status](https://img.shields.io/travis/ForbesLindesay/run-on-ssh/master.svg)](https://travis-ci.org/ForbesLindesay/run-on-ssh)
